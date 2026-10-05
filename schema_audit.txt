@@ -1,0 +1,457 @@
+﻿=== TABLES ===
+CREATE TABLE IF NOT EXISTS "public"."account_mapping_analysis" (
+CREATE TABLE IF NOT EXISTS "public"."assets" (
+CREATE TABLE IF NOT EXISTS "public"."cash_balances" (
+CREATE TABLE IF NOT EXISTS "public"."commitment_allocations" (
+CREATE TABLE IF NOT EXISTS "public"."commitment_schedules" (
+CREATE TABLE IF NOT EXISTS "public"."cooperative_loan_repayments" (
+CREATE TABLE IF NOT EXISTS "public"."cooperative_loan_schedules" (
+CREATE TABLE IF NOT EXISTS "public"."cooperative_loans" (
+CREATE TABLE IF NOT EXISTS "public"."cooperatives" (
+CREATE TABLE IF NOT EXISTS "public"."fund_valuations" (
+CREATE TABLE IF NOT EXISTS "public"."fx_data_staging" (
+CREATE TABLE IF NOT EXISTS "public"."fx_rates" (
+CREATE TABLE IF NOT EXISTS "public"."goals" (
+CREATE TABLE IF NOT EXISTS "public"."investment_classification_policy" (
+CREATE TABLE IF NOT EXISTS "public"."investments" (
+CREATE TABLE IF NOT EXISTS "public"."liabilities" (
+CREATE TABLE IF NOT EXISTS "public"."manual_market_quote_updates" (
+CREATE TABLE IF NOT EXISTS "public"."market_data_ingestion_log" (
+CREATE TABLE IF NOT EXISTS "public"."market_data_providers" (
+CREATE TABLE IF NOT EXISTS "public"."market_data_refresh_queue" (
+CREATE TABLE IF NOT EXISTS "public"."market_data_staging" (
+CREATE TABLE IF NOT EXISTS "public"."market_quotes" (
+CREATE TABLE IF NOT EXISTS "public"."pension_accounts" (
+CREATE TABLE IF NOT EXISTS "public"."portfolio_policy" (
+CREATE TABLE IF NOT EXISTS "public"."reconciliation_evidence" (
+CREATE TABLE IF NOT EXISTS "public"."reconciliation_items" (
+CREATE TABLE IF NOT EXISTS "public"."sync_log" (
+CREATE TABLE IF NOT EXISTS "public"."thrift_commitments" (
+CREATE TABLE IF NOT EXISTS "public"."transaction_lineage_audit" (
+CREATE TABLE IF NOT EXISTS "public"."transactions" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_liquidity_settings" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_action_approvals" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_capital_allocation_recommendations" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_execution_records" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_decision_recommendations" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_what_if_comparisons" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_what_if_options" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_decision_forecasts" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_decision_scenarios" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_rebalancing_actions" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_rebalancing_approval_links" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_decision_forecast_paths" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_fi_forecasts" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_goal_funding_sources" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_goal_forecasts" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_capital_allocation_candidates" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_capital_allocation_runs" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_profiles" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_rebalancing_runs" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_collector_runs" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_pipeline_runs" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_pipeline_test_results" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_ui_summary" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_net_worth_snapshots" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_portfolio_snapshots" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_data_quality_checks" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_scenario_results" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_scenarios" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_accounts" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_action_execution_records" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_action_plans" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_actions" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_alerts" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_allocation_asset_rules" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_automation_jobs" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_available_capital" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_backend_freeze" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_capital_targets" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_decision_history" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_dividends" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_fx_raw_ingestion" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_fx_staging" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_goals" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_integrity_checks" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_market_history" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_market_raw_ingestion" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_market_staging" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_performance_engine_metrics" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_performance_snapshots" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_portfolio_targets" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_rebalancing_candidates" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_rebalancing_targets" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_reconciliation_findings" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_reconciliation_runs" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_scenario_actions" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_settings" (
+CREATE TABLE IF NOT EXISTS "public"."wealth_transaction_effects" (
+
+=== VIEWS ===
+CREATE OR REPLACE FUNCTION "public"."get_annual_investment_review"("p_year" integer DEFAULT (EXTRACT(year FROM CURRENT_DATE))::integer) RETURNS TABLE("year" integer, "start_value_ngn" numeric, "end_value_ngn" numeric, "contributions_ngn" numeric, "withdrawals_ngn" numeric, "investment_change_ngn" numeric, "latest_return_pct" numeric, "latest_benchmark_pct" numeric, "latest_excess_pct" numeric, "latest_volatility_pct" numeric, "latest_rolling_12m_pct" numeric)
+CREATE OR REPLACE FUNCTION "public"."get_wealth_review_summary"("p_year" integer DEFAULT (EXTRACT(year FROM CURRENT_DATE))::integer) RETURNS "jsonb"
+CREATE OR REPLACE VIEW "public"."cooperative_loan_summary" AS
+CREATE OR REPLACE VIEW "public"."market_data_status" AS
+CREATE OR REPLACE VIEW "public"."v_asset_performance" AS
+CREATE OR REPLACE VIEW "public"."v_asset_summary" AS
+CREATE OR REPLACE VIEW "public"."v_available_capital_for_allocation" AS
+CREATE OR REPLACE VIEW "public"."v_cooperative_loan_summary" AS
+CREATE OR REPLACE VIEW "public"."v_cooperative_reconciliation" AS
+CREATE OR REPLACE VIEW "public"."v_decision_action_queue" AS
+CREATE OR REPLACE VIEW "public"."v_decision_centre" AS
+CREATE OR REPLACE VIEW "public"."v_decision_centre_forecast" AS
+CREATE OR REPLACE VIEW "public"."v_rebalancing_approval_queue" AS
+CREATE OR REPLACE VIEW "public"."v_decision_centre_intelligent_queue" AS
+CREATE OR REPLACE VIEW "public"."v_decision_centre_probability_forecast" AS
+CREATE OR REPLACE VIEW "public"."v_decision_centre_real_forecast" AS
+CREATE OR REPLACE VIEW "public"."v_decision_what_if" AS
+CREATE OR REPLACE VIEW "public"."v_fi_forecast_summary" AS
+CREATE OR REPLACE VIEW "public"."v_goal_decision_inputs" AS
+CREATE OR REPLACE VIEW "public"."v_goal_action_candidates" AS
+CREATE OR REPLACE VIEW "public"."v_goal_funding_capacity" AS
+CREATE OR REPLACE VIEW "public"."v_goal_decision_centre" AS
+CREATE OR REPLACE VIEW "public"."v_goal_forecast_summary" AS
+CREATE OR REPLACE VIEW "public"."v_goal_intelligence" WITH ("security_invoker"='true') AS
+CREATE OR REPLACE VIEW "public"."v_goal_progress" AS
+CREATE OR REPLACE VIEW "public"."v_intelligent_capital_allocation" AS
+CREATE OR REPLACE VIEW "public"."v_master_asset_positions" WITH ("security_invoker"='true') AS
+CREATE OR REPLACE VIEW "public"."v_wealth_financial_position" AS
+CREATE OR REPLACE VIEW "public"."v_master_wealth_summary" AS
+CREATE OR REPLACE VIEW "public"."v_rebalancing_decision_centre" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_automation_status" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_forecast_current" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_intelligence" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_os_health" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_production_readiness" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_reconciliation_report" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_scenario_summary" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_transaction_reconciliation" AS
+CREATE OR REPLACE VIEW "public"."wealth_commitment_summary" AS
+CREATE OR REPLACE VIEW "public"."wealth_financial_position" AS
+CREATE OR REPLACE VIEW "public"."wealth_liquidity_position" AS
+CREATE OR REPLACE VIEW "public"."wealth_unified_positions" AS
+CREATE OR REPLACE VIEW "public"."cooperative_loan_summary" WITH ("security_invoker"='true') AS
+CREATE OR REPLACE VIEW "public"."v_cooperative_loan_summary" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_reconciliation_report" AS
+CREATE OR REPLACE VIEW "public"."v_wealth_transaction_reconciliation" WITH ("security_invoker"='true') AS
+CREATE POLICY "Users can view own profile" ON "public"."wealth_profiles" FOR SELECT USING (("auth"."uid"() = "id"));
+CREATE POLICY "Users view own reconciliation findings" ON "public"."wealth_reconciliation_findings" FOR SELECT TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users view own reconciliation runs" ON "public"."wealth_reconciliation_runs" FOR SELECT TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users view own transaction effects" ON "public"."wealth_transaction_effects" FOR SELECT TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+
+=== FUNCTIONS ===
+CREATE OR REPLACE FUNCTION "public"."approve_action_plan"("p_plan_id" "uuid", "p_approved_by" "text") RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."approve_capital_allocation"("p_allocation_id" "uuid", "p_approved_by" "text" DEFAULT 'USER'::"text", "p_decision_note" "text" DEFAULT NULL::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."approve_wealth_decision"("p_decision_id" bigint, "p_notes" "text" DEFAULT NULL::"text") RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."build_decision_forecast"("p_approval_id" "uuid", "p_horizon_years" numeric DEFAULT 10) RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."build_decision_what_if_scenarios"("p_approval_id" "uuid") RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."build_intelligent_action_plan"("p_plan_id" "uuid") RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."build_market_data_refresh_queue"() RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."build_probability_forecast"("p_approval_id" "uuid", "p_horizon_years" numeric DEFAULT 10, "p_paths" integer DEFAULT 500) RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."build_real_trajectory_decision_forecast"("p_approval_id" "uuid", "p_horizon_years" numeric DEFAULT 10) RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."build_rebalancing_approval_queue"("p_run_id" "uuid", "p_min_confidence" numeric DEFAULT 80, "p_decision_id" "uuid" DEFAULT NULL::"uuid") RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."calculate_cooperative_loan_terms"("p_principal" numeric, "p_interest_rate" numeric, "p_interest_method" "text", "p_repayment_frequency" "text", "p_tenor_months" integer) RETURNS TABLE("principal" numeric, "interest_amount" numeric, "total_due" numeric, "number_of_installments" integer, "installment_amount" numeric)
+CREATE OR REPLACE FUNCTION "public"."calculate_fi_forecast"("p_scenario_id" "uuid" DEFAULT NULL::"uuid") RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."calculate_goal_forecast"("p_goal_id" "uuid", "p_scenario_id" "uuid" DEFAULT NULL::"uuid") RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."capture_wealth_intelligence_decision"("p_new_money_ngn" numeric DEFAULT 0) RETURNS bigint
+CREATE OR REPLACE FUNCTION "public"."complete_action_plan"("p_plan_id" "uuid", "p_reference" "text" DEFAULT NULL::"text", "p_notes" "text" DEFAULT NULL::"text") RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."convert_currency"("p_amount" numeric, "p_from_currency" "text", "p_to_currency" "text") RETURNS TABLE("original_amount" numeric, "from_currency" "text", "to_currency" "text", "exchange_rate" numeric, "converted_amount" numeric, "rate_source" "text", "rate_time" timestamp with time zone, "is_stale" boolean)
+CREATE OR REPLACE FUNCTION "public"."convert_top_allocation_to_approval"("p_run_id" "uuid", "p_decision_id" "uuid" DEFAULT NULL::"uuid") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."create_capital_allocation_recommendation"("p_decision_id" "uuid", "p_asset_class" "text", "p_asset_identifier" "text", "p_asset_name" "text", "p_market" "text", "p_currency" "text", "p_amount" numeric, "p_funding_source" "text", "p_funding_amount" numeric, "p_rationale" "text", "p_expected_impact_ngn" numeric DEFAULT NULL::numeric, "p_expected_return_pct" numeric DEFAULT NULL::numeric, "p_risk_level" "text" DEFAULT NULL::"text", "p_target_date" "date" DEFAULT NULL::"date") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."create_daily_wealth_snapshot"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."create_wealth_account"("p_user_id" "uuid", "p_account_name" "text", "p_account_type" "text" DEFAULT 'OTHER'::"text", "p_currency" "text" DEFAULT 'NGN'::"text", "p_provider_name" "text" DEFAULT NULL::"text", "p_account_number_last4" "text" DEFAULT NULL::"text", "p_opening_balance" numeric DEFAULT 0, "p_notes" "text" DEFAULT NULL::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."delete_wealth_account"("p_user_id" "uuid", "p_account_id" "uuid") RETURNS boolean
+CREATE OR REPLACE FUNCTION "public"."generate_action_execution_plan"() RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."get_action_execution_plan"() RETURNS TABLE("id" "uuid", "action_key" "text", "plan_status" "text", "approval_required" boolean, "approved_at" timestamp with time zone, "amount_ngn" numeric, "target_asset" "text", "target_market" "text", "target_currency" "text", "source_of_funds" "text", "deadline_at" timestamp with time zone, "expected_impact_ngn" numeric, "expected_return_pct" numeric, "risk_level" "text", "rationale" "text", "execution_instructions" "text", "execution_reference" "text", "execution_status" "text", "execution_notes" "text", "created_at" timestamp with time zone, "updated_at" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."get_annual_investment_review"("p_year" integer DEFAULT (EXTRACT(year FROM CURRENT_DATE))::integer) RETURNS TABLE("year" integer, "start_value_ngn" numeric, "end_value_ngn" numeric, "contributions_ngn" numeric, "withdrawals_ngn" numeric, "investment_change_ngn" numeric, "latest_return_pct" numeric, "latest_benchmark_pct" numeric, "latest_excess_pct" numeric, "latest_volatility_pct" numeric, "latest_rolling_12m_pct" numeric)
+CREATE OR REPLACE FUNCTION "public"."get_available_capital_for_allocation"() RETURNS TABLE("cash_ngn" numeric, "cash_usd" numeric, "goal_reserved_ngn" numeric, "emergency_reserved_ngn" numeric, "investable_ngn" numeric, "investable_usd" numeric, "as_of_date" "date")
+CREATE OR REPLACE FUNCTION "public"."get_commitment_aware_cashflow_forecast"("p_months" integer DEFAULT 4) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_consolidated_portfolio_value"() RETURNS TABLE("holdings_count" bigint, "total_cost_basis_ngn" numeric, "total_current_value_ngn" numeric, "total_unrealized_gain_loss_ngn" numeric, "total_return_pct" numeric, "native_ngn_value" numeric, "foreign_currency_value_ngn" numeric, "fx_stale_count" bigint, "reporting_currency" "text")
+CREATE OR REPLACE FUNCTION "public"."get_cooperative_loan_eligibility"("p_user_id" "uuid", "p_cooperative_id" "uuid") RETURNS TABLE("cooperative_id" "uuid", "savings" numeric, "eligibility_method" "text", "multiplier" numeric, "fixed_limit" numeric, "max_eligible" numeric, "policy_notes" "text")
+CREATE OR REPLACE FUNCTION "public"."get_decision_centre"() RETURNS TABLE("rank" integer, "action_key" "text", "priority_score" numeric, "action_type" "text", "category" "text", "title" "text", "description" "text", "recommendation" "text", "urgency_score" numeric, "financial_impact_score" numeric, "risk_score" numeric, "cash_fit_score" numeric, "confidence_score" numeric, "estimated_impact_ngn" numeric, "required_cash_ngn" numeric, "available_cash_ngn" numeric, "source_alert_key" "text", "context" "jsonb")
+CREATE OR REPLACE FUNCTION "public"."get_decision_centre_impact_summary"("p_approval_id" "uuid") RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_decision_centre_top_recommendation"() RETURNS TABLE("approval_id" "uuid", "allocation_id" "uuid", "rebalancing_action_id" "uuid", "asset_identifier" "text", "asset_name" "text", "market" "text", "currency" "text", "exact_amount" numeric, "funding_source" "text", "confidence_score" numeric, "priority_score" numeric, "decision_summary" "text", "why_it_won" "text", "approve_impact" "text", "do_nothing_impact" "text", "goal_impact_summary" "text", "risk_impact_summary" "text", "liquidity_impact_summary" "text")
+CREATE OR REPLACE FUNCTION "public"."get_decision_forecast_comparison"("p_approval_id" "uuid", "p_horizon_years" numeric DEFAULT 10) RETURNS TABLE("scenario_type" "text", "scenario_name" "text", "amount" numeric, "currency" "text", "projected_portfolio_value" numeric, "projected_fi_date" "date", "fi_probability_pct" numeric, "goal_completion_probability_pct" numeric, "goal_eta_date" "date", "portfolio_delta_vs_baseline" numeric, "goal_probability_delta_pct" numeric)
+CREATE OR REPLACE FUNCTION "public"."get_dividend_calendar"("p_from" "date" DEFAULT CURRENT_DATE, "p_to" "date" DEFAULT ((CURRENT_DATE + '90 days'::interval))::"date") RETURNS TABLE("ticker" "text", "market" "text", "currency" "text", "ex_date" "date", "pay_date" "date", "dividend_per_share" numeric, "shares" numeric, "expected_amount" numeric, "status" "text")
+CREATE OR REPLACE FUNCTION "public"."get_dynamic_portfolio_health"() RETURNS TABLE("health_score" numeric, "performance_score" numeric, "diversification_score" numeric, "data_quality_score" numeric, "fx_score" numeric, "portfolio_value_ngn" numeric, "gain_loss_ngn" numeric, "return_pct" numeric, "largest_holding_pct" numeric, "recommendation" "text", "generated_at" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."get_financial_decision_engine"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_financial_position"() RETURNS TABLE("reporting_currency" "text", "investment_value_ngn" numeric, "investment_cost_ngn" numeric, "investment_gain_loss_ngn" numeric, "non_investment_assets_ngn" numeric, "thrift_paid_ngn" numeric, "cooperative_balance_ngn" numeric, "total_assets_ngn" numeric, "liabilities_ngn" numeric, "net_worth_ngn" numeric, "investable_net_worth_ngn" numeric, "foreign_assets_ngn" numeric, "foreign_exposure_pct" numeric, "fx_rate" numeric, "fx_provider" "text", "fx_source_type" "text", "fx_is_stale" boolean, "data_quality_score" numeric, "generated_at" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."get_fund_data_health"() RETURNS TABLE("ticker" "text", "fund_name" "text", "provider" "text", "valuation_value" numeric, "currency" "text", "source_type" "text", "valuation_date" timestamp with time zone, "valid_until" timestamp with time zone, "is_manual_override" boolean, "data_status" "text", "age_hours" numeric)
+CREATE OR REPLACE FUNCTION "public"."get_fund_valuation"("p_ticker" "text") RETURNS TABLE("ticker" "text", "fund_name" "text", "provider" "text", "valuation_value" numeric, "currency" "text", "source_type" "text", "valuation_date" timestamp with time zone, "is_manual_override" boolean, "is_stale" boolean)
+CREATE OR REPLACE FUNCTION "public"."get_fx_aware_investments"() RETURNS TABLE("investment_id" "uuid", "asset_name" "text", "ticker" "text", "asset_type" "text", "market" "text", "asset_currency" "text", "native_value" numeric, "fx_rate" numeric, "reporting_currency" "text", "reporting_value" numeric, "unrealized_gain_loss_native" numeric, "price_source" "text", "fx_source" "text", "fx_rate_time" timestamp with time zone, "fx_is_stale" boolean)
+CREATE OR REPLACE FUNCTION "public"."get_fx_provider"() RETURNS TABLE("provider_id" "uuid", "provider_name" "text", "base_url" "text", "priority" integer, "refresh_interval_minutes" integer, "supports_manual_override" boolean, "api_key_secret_name" "text", "request_timeout_seconds" integer)
+CREATE OR REPLACE FUNCTION "public"."get_fx_rate"("p_base_currency" "text", "p_quote_currency" "text") RETURNS TABLE("rate" numeric, "provider" "text", "source_type" "text", "rate_time" timestamp with time zone, "is_manual_override" boolean, "is_stale" boolean)
+CREATE OR REPLACE FUNCTION "public"."get_goal_driven_capital_allocation"("p_new_money_ngn" numeric DEFAULT 0) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_investment_allocation_engine"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_investment_ledger_reconciliation"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_market_data_health"() RETURNS TABLE("ticker" "text", "market" "text", "currency" "text", "price" numeric, "source_type" "text", "provider" "text", "quote_time" timestamp with time zone, "valid_until" timestamp with time zone, "is_manual_override" boolean, "data_status" "text", "age_hours" numeric)
+CREATE OR REPLACE FUNCTION "public"."get_market_quote"("p_ticker" "text", "p_market" "text") RETURNS TABLE("ticker" "text", "market" "text", "price" numeric, "currency" "text", "provider" "text", "source_type" "text", "quote_time" timestamp with time zone, "is_manual_override" boolean, "is_stale" boolean)
+CREATE OR REPLACE FUNCTION "public"."get_net_worth_intelligence"() RETURNS TABLE("total_net_worth_ngn" numeric, "investable_ngn" numeric, "property_ngn" numeric, "pension_ngn" numeric, "cash_ngn" numeric, "cooperative_ngn" numeric, "foreign_value_ngn" numeric, "investable_pct" numeric, "property_pct" numeric, "pension_pct" numeric, "cash_pct" numeric, "cooperative_pct" numeric, "fx_stale_count" bigint, "reporting_currency" "text")
+CREATE OR REPLACE FUNCTION "public"."get_net_worth_timeline"() RETURNS TABLE("snapshot_date" "date", "total_value_ngn" numeric, "total_value_usd" numeric, "contributions_ngn" numeric, "withdrawals_ngn" numeric, "net_worth_ngn" numeric)
+CREATE OR REPLACE FUNCTION "public"."get_next_capital_priority"() RETURNS TABLE("ticker" "text", "market" "text", "currency" "text", "current_value" numeric, "target_amount" numeric, "gap_amount" numeric, "progress_pct" numeric, "recommendation" "text", "decision_status" "text")
+CREATE OR REPLACE FUNCTION "public"."get_next_wealth_action"() RETURNS TABLE("action_key" "text", "title" "text", "recommendation" "text", "priority_score" numeric, "rank" integer, "action_type" "text", "category" "text", "urgency_score" numeric, "financial_impact_score" numeric, "risk_score" numeric, "cash_fit_score" numeric, "confidence_score" numeric, "available_cash_ngn" numeric, "estimated_impact_ngn" numeric, "source_alert_key" "text", "generated_at" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."get_personalized_rebalancing_plan"("p_deployment_ngn" numeric DEFAULT NULL::numeric) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_portfolio_classification_truth"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_portfolio_fx_health"() RETURNS TABLE("reporting_currency" "text", "fx_pairs_required" bigint, "fx_pairs_available" bigint, "foreign_holdings_count" bigint, "foreign_value_ngn" numeric, "current_usd_ngn_rate" numeric, "fx_source" "text", "fx_is_manual" boolean, "fx_is_stale" boolean, "portfolio_value_ngn" numeric, "portfolio_status" "text")
+CREATE OR REPLACE FUNCTION "public"."get_portfolio_rebalancing_policy"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_safe_investment_window"("p_months" integer DEFAULT 6) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_security_level_dca_plan"("p_deployment_ngn" numeric DEFAULT NULL::numeric) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_strategic_capital_gaps"() RETURNS TABLE("scope_type" "text", "market" "text", "ticker" "text", "currency" "text", "target_amount" numeric, "current_value" numeric, "gap_amount" numeric, "progress_pct" numeric, "priority" integer, "funding_needed" boolean, "rationale" "text")
+CREATE OR REPLACE FUNCTION "public"."get_strategic_capital_targets"() RETURNS TABLE("scope_type" "text", "market" "text", "ticker" "text", "target_amount" numeric, "currency" "text", "priority" integer, "rationale" "text")
+CREATE OR REPLACE FUNCTION "public"."get_true_net_worth"() RETURNS TABLE("position_count" bigint, "total_net_worth_ngn" numeric, "native_ngn_value" numeric, "foreign_value_ngn" numeric, "investments_ngn" numeric, "property_ngn" numeric, "pension_ngn" numeric, "cash_ngn" numeric, "cooperative_ngn" numeric, "thrift_ngn" numeric, "liabilities_ngn" numeric, "fx_stale_count" bigint, "reporting_currency" "text")
+CREATE OR REPLACE FUNCTION "public"."get_wealth_canonical_contract"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_wealth_decision_history"("p_limit" integer DEFAULT 20) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_wealth_goal_trajectory"("p_monthly_investment_ngn" numeric DEFAULT 50000, "p_annual_return_pct" numeric DEFAULT 8, "p_months" integer DEFAULT 120) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_wealth_intelligence_api_payload"("p_new_money_ngn" numeric DEFAULT 0) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_wealth_intelligence_dashboard_contract"("p_new_money_ngn" numeric DEFAULT 0) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_wealth_intelligence_decision"("p_new_money_ngn" numeric DEFAULT 0) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_wealth_os_dashboard"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_wealth_performance_summary"() RETURNS TABLE("snapshot_date" "date", "portfolio_return_pct" numeric, "benchmark_return_pct" numeric, "excess_return_pct" numeric, "volatility_pct" numeric, "rolling_12m_return_pct" numeric)
+CREATE OR REPLACE FUNCTION "public"."get_wealth_pulse"() RETURNS TABLE("pulse_score" numeric, "pulse_status" "text", "net_worth_ngn" numeric, "investable_net_worth_ngn" numeric, "portfolio_value_ngn" numeric, "foreign_exposure_pct" numeric, "portfolio_health_score" numeric, "data_quality_score" numeric, "primary_action" "text", "generated_at" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."get_wealth_review_summary"("p_year" integer DEFAULT (EXTRACT(year FROM CURRENT_DATE))::integer) RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."get_wealth_scenario_analysis"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."ingest_market_quote"("p_ticker" "text", "p_market" "text", "p_price" numeric, "p_currency" "text", "p_provider" "text", "p_change_amount" numeric DEFAULT NULL::numeric, "p_change_percent" numeric DEFAULT NULL::numeric, "p_valid_days" integer DEFAULT 1) RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."mark_action_executing"("p_plan_id" "uuid", "p_reference" "text") RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."mark_wealth_decision_executed"("p_decision_id" bigint, "p_notes" "text" DEFAULT NULL::"text") RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."post_cooperative_loan"("p_user_id" "uuid", "p_cooperative_id" "uuid", "p_loan_date" "date", "p_amount" numeric, "p_interest_amount" numeric DEFAULT 0, "p_receiving_account_name" "text" DEFAULT NULL::"text", "p_reference" "text" DEFAULT NULL::"text", "p_notes" "text" DEFAULT NULL::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."post_cooperative_loan_repayment"("p_user_id" "uuid", "p_loan_id" "uuid", "p_payment_date" "date", "p_amount_paid" numeric, "p_payment_account_name" "text" DEFAULT NULL::"text", "p_reference" "text" DEFAULT NULL::"text", "p_notes" "text" DEFAULT NULL::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."post_cooperative_loan_v2"("p_user_id" "uuid", "p_cooperative_id" "uuid", "p_loan_date" "date", "p_amount" numeric, "p_interest_rate" numeric, "p_interest_method" "text", "p_repayment_frequency" "text", "p_tenor_months" integer, "p_first_repayment_date" "date" DEFAULT NULL::"date", "p_receiving_account_name" "text" DEFAULT NULL::"text", "p_reference" "text" DEFAULT NULL::"text", "p_notes" "text" DEFAULT NULL::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."post_wealth_transaction"("p_user_id" "uuid", "p_transaction_date" "date", "p_transaction_type" "text", "p_amount" numeric, "p_currency" "text" DEFAULT 'NGN'::"text", "p_asset_name" "text" DEFAULT NULL::"text", "p_ticker" "text" DEFAULT NULL::"text", "p_category" "text" DEFAULT NULL::"text", "p_description" "text" DEFAULT NULL::"text", "p_quantity" numeric DEFAULT NULL::numeric, "p_unit_price" numeric DEFAULT NULL::numeric, "p_account_name" "text" DEFAULT NULL::"text", "p_reference" "text" DEFAULT NULL::"text", "p_source" "text" DEFAULT 'wealth_os'::"text", "p_source_id" "text" DEFAULT NULL::"text", "p_notes" "text" DEFAULT NULL::"text", "p_target_account_name" "text" DEFAULT NULL::"text", "p_thrift_id" "uuid" DEFAULT NULL::"uuid", "p_market" "text" DEFAULT NULL::"text", "p_asset_type" "text" DEFAULT NULL::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."promote_rebalancing_buy_to_approval"("p_run_id" "uuid", "p_min_confidence" numeric DEFAULT 80, "p_decision_id" "uuid" DEFAULT NULL::"uuid") RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."promote_valid_fx_data"("p_staging_id" "uuid") RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."rank_what_if_comparison"("p_comparison_id" "uuid") RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."record_manual_action_execution"("p_plan_id" "uuid", "p_external_reference" "text" DEFAULT NULL::"text", "p_notes" "text" DEFAULT NULL::"text", "p_executed_at" timestamp with time zone DEFAULT "now"()) RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."refresh_all_fund_valuations"() RETURNS TABLE("investment_id" "uuid", "asset_name" "text", "ticker" "text", "current_value" numeric, "unrealized_gain_loss" numeric, "price_source" "text", "last_price_update" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."refresh_all_investment_valuations"() RETURNS TABLE("investment_id" "uuid", "asset_name" "text", "ticker" "text", "market" "text", "currency" "text", "current_price" numeric, "current_value" numeric, "unrealized_gain_loss" numeric, "price_source" "text", "last_price_update" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."refresh_all_investments"() RETURNS TABLE("investment_id" "uuid", "asset_name" "text", "ticker" "text", "asset_type" "text", "market" "text", "currency" "text", "current_price" numeric, "current_value" numeric, "unrealized_gain_loss" numeric, "price_source" "text", "last_price_update" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."refresh_decision_centre"() RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."refresh_decision_centre_real_forecasts"("p_horizon_years" numeric DEFAULT 10) RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."refresh_goal_fi_forecasts_daily"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."refresh_goal_intelligence"() RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."refresh_investment_valuation"("p_ticker" "text", "p_market" "text") RETURNS TABLE("investment_id" "uuid", "asset_name" "text", "ticker" "text", "current_price" numeric, "current_value" numeric, "unrealized_gain_loss" numeric, "price_source" "text", "last_price_update" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."refresh_performance_engine_metrics"("p_lookback_months" integer DEFAULT 12) RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."refresh_wealth_alerts"() RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."refresh_wealth_os_summary"("p_user_id" "uuid") RETURNS "void"
+CREATE OR REPLACE FUNCTION "public"."refresh_wealth_ui_summary"() RETURNS "void"
+CREATE OR REPLACE FUNCTION "public"."reject_action_plan"("p_plan_id" "uuid", "p_rejected_by" "text" DEFAULT 'USER'::"text", "p_reason" "text" DEFAULT NULL::"text") RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."reject_capital_allocation"("p_allocation_id" "uuid", "p_decision_note" "text" DEFAULT NULL::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."reject_wealth_decision"("p_decision_id" bigint, "p_notes" "text" DEFAULT NULL::"text") RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."rls_auto_enable"() RETURNS "event_trigger"
+CREATE OR REPLACE FUNCTION "public"."run_intelligent_capital_allocation"("p_target_name" "text", "p_available_cash_ngn" numeric DEFAULT NULL::numeric, "p_available_cash_usd" numeric DEFAULT NULL::numeric, "p_goal_reserved_cash_ngn" numeric DEFAULT NULL::numeric, "p_emergency_reserve_ngn" numeric DEFAULT NULL::numeric, "p_risk_profile" "text" DEFAULT 'MODERATE'::"text", "p_reason" "text" DEFAULT NULL::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."run_portfolio_rebalancing"("p_target_name" "text", "p_risk_profile" "text" DEFAULT 'MODERATE'::"text") RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."run_wealth_data_quality_checks"() RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."run_wealth_integrity_check"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."run_wealth_os_daily_pipeline"() RETURNS "uuid"
+CREATE OR REPLACE FUNCTION "public"."run_wealth_os_full_daily_chain"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."run_wealth_os_integration_tests"() RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."run_wealth_reconciliation"("p_user_id" "uuid") RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."run_wealth_scenario"("p_scenario_id" "uuid") RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."schedule_daily_wealth_snapshot"() RETURNS "void"
+CREATE OR REPLACE FUNCTION "public"."score_what_if_option"("p_option_id" "uuid") RETURNS numeric
+CREATE OR REPLACE FUNCTION "public"."set_manual_fund_valuation"("p_ticker" "text", "p_value" numeric, "p_valid_days" integer DEFAULT 7, "p_notes" "text" DEFAULT NULL::"text") RETURNS TABLE("ticker" "text", "fund_name" "text", "valuation_value" numeric, "currency" "text", "source_type" "text", "provider" "text", "is_manual_override" boolean, "valid_until" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."set_manual_market_price"("p_ticker" "text", "p_market" "text", "p_price" numeric, "p_valid_days" integer DEFAULT 7) RETURNS TABLE("ticker" "text", "market" "text", "price" numeric, "currency" "text", "source_type" "text", "provider" "text", "is_manual_override" boolean, "valid_until" timestamp with time zone)
+CREATE OR REPLACE FUNCTION "public"."set_manual_mutual_fund_quote"("p_ticker" "text", "p_price" numeric, "p_quote_time" timestamp with time zone DEFAULT "now"(), "p_valid_until" timestamp with time zone DEFAULT NULL::timestamp with time zone, "p_note" "text" DEFAULT NULL::"text") RETURNS "jsonb"
+CREATE OR REPLACE FUNCTION "public"."sync_cash_and_liabilities_to_positions"() RETURNS "void"
+CREATE OR REPLACE FUNCTION "public"."update_wealth_account"("p_user_id" "uuid", "p_account_id" "uuid", "p_account_name" "text", "p_account_type" "text", "p_currency" "text", "p_provider_name" "text" DEFAULT NULL::"text", "p_account_number_last4" "text" DEFAULT NULL::"text", "p_notes" "text" DEFAULT NULL::"text") RETURNS boolean
+CREATE OR REPLACE FUNCTION "public"."validate_fx_data_staging"("p_staging_id" "uuid") RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."validate_market_data_staging"("p_staging_id" "uuid") RETURNS "text"
+CREATE OR REPLACE FUNCTION "public"."validate_promote_fx_staging"() RETURNS integer
+CREATE OR REPLACE FUNCTION "public"."validate_promote_market_staging"() RETURNS integer
+
+=== TRIGGERS ===
+CREATE OR REPLACE FUNCTION "public"."rls_auto_enable"() RETURNS "event_trigger"
+
+=== INDEXES ===
+CREATE INDEX "cooperative_loan_repayments_loan_id_idx" ON "public"."cooperative_loan_repayments" USING "btree" ("loan_id");
+CREATE INDEX "cooperative_loan_repayments_user_id_idx" ON "public"."cooperative_loan_repayments" USING "btree" ("user_id");
+CREATE INDEX "cooperative_loan_schedules_user_idx" ON "public"."cooperative_loan_schedules" USING "btree" ("user_id", "due_date");
+CREATE INDEX "cooperative_loans_cooperative_id_idx" ON "public"."cooperative_loans" USING "btree" ("cooperative_id");
+CREATE INDEX "cooperative_loans_user_id_idx" ON "public"."cooperative_loans" USING "btree" ("user_id");
+CREATE INDEX "cooperative_loans_user_status_idx" ON "public"."cooperative_loans" USING "btree" ("user_id", "status");
+CREATE INDEX "idx_action_approval_status" ON "public"."wealth_action_approvals" USING "btree" ("approval_status", "requested_at" DESC);
+CREATE INDEX "idx_assets_user" ON "public"."assets" USING "btree" ("user_id");
+CREATE INDEX "idx_capital_alloc_candidates_run" ON "public"."wealth_capital_allocation_candidates" USING "btree" ("run_id", "recommended_amount" DESC);
+CREATE INDEX "idx_capital_alloc_decision" ON "public"."wealth_capital_allocation_recommendations" USING "btree" ("decision_id");
+CREATE INDEX "idx_capital_alloc_status" ON "public"."wealth_capital_allocation_recommendations" USING "btree" ("status");
+CREATE INDEX "idx_cash_balances_active" ON "public"."cash_balances" USING "btree" ("is_active", "valuation_date" DESC);
+CREATE INDEX "idx_commitment_allocations_date" ON "public"."commitment_allocations" USING "btree" ("user_id", "allocation_date");
+CREATE INDEX "idx_commitment_allocations_schedule" ON "public"."commitment_allocations" USING "btree" ("commitment_schedule_id");
+CREATE INDEX "idx_commitment_allocations_transaction" ON "public"."commitment_allocations" USING "btree" ("transaction_id");
+CREATE INDEX "idx_commitment_allocations_user" ON "public"."commitment_allocations" USING "btree" ("user_id");
+CREATE INDEX "idx_commitment_schedules_cooperative" ON "public"."commitment_schedules" USING "btree" ("cooperative_id");
+CREATE INDEX "idx_commitment_schedules_due" ON "public"."commitment_schedules" USING "btree" ("user_id", "next_due_date") WHERE ("status" = 'ACTIVE'::"text");
+CREATE INDEX "idx_commitment_schedules_thrift" ON "public"."commitment_schedules" USING "btree" ("thrift_id");
+CREATE INDEX "idx_commitment_schedules_user" ON "public"."commitment_schedules" USING "btree" ("user_id");
+CREATE INDEX "idx_cooperatives_user" ON "public"."cooperatives" USING "btree" ("user_id");
+CREATE INDEX "idx_decision_recommendations_status" ON "public"."wealth_decision_recommendations" USING "btree" ("status", "created_at" DESC);
+CREATE INDEX "idx_decision_scenarios_approval" ON "public"."wealth_decision_scenarios" USING "btree" ("approval_id", "scenario_type");
+CREATE INDEX "idx_execution_allocation" ON "public"."wealth_execution_records" USING "btree" ("allocation_id");
+CREATE INDEX "idx_fi_forecasts_date" ON "public"."wealth_fi_forecasts" USING "btree" ("forecast_date");
+CREATE INDEX "idx_fund_valuations_active_lookup" ON "public"."fund_valuations" USING "btree" ("ticker", "is_active", "valuation_date" DESC);
+CREATE INDEX "idx_fx_rates_active_pair_time" ON "public"."fx_rates" USING "btree" ("base_currency", "quote_currency", "is_active", "rate_time" DESC);
+CREATE INDEX "idx_fx_rates_pair" ON "public"."fx_rates" USING "btree" ("base_currency", "quote_currency");
+CREATE INDEX "idx_fx_raw_date" ON "public"."wealth_fx_raw_ingestion" USING "btree" ("ingestion_date");
+CREATE INDEX "idx_goal_forecasts_goal_date" ON "public"."wealth_goal_forecasts" USING "btree" ("goal_id", "forecast_date");
+CREATE INDEX "idx_goal_funding_sources_goal" ON "public"."wealth_goal_funding_sources" USING "btree" ("goal_id");
+CREATE INDEX "idx_goal_funding_sources_source" ON "public"."wealth_goal_funding_sources" USING "btree" ("source_type", "source_id");
+CREATE INDEX "idx_goals_user" ON "public"."goals" USING "btree" ("user_id");
+CREATE INDEX "idx_investments_user" ON "public"."investments" USING "btree" ("user_id");
+CREATE INDEX "idx_market_quotes_ticker" ON "public"."market_quotes" USING "btree" ("ticker", "market");
+CREATE INDEX "idx_market_raw_date" ON "public"."wealth_market_raw_ingestion" USING "btree" ("ingestion_date");
+CREATE INDEX "idx_pension_accounts_active" ON "public"."pension_accounts" USING "btree" ("is_active", "valuation_date" DESC);
+CREATE INDEX "idx_rebal_candidates_plan_rank" ON "public"."wealth_rebalancing_candidates" USING "btree" ("action_plan_id", "rank");
+CREATE INDEX "idx_rebalancing_actions_run_score" ON "public"."wealth_rebalancing_actions" USING "btree" ("run_id", "priority_score" DESC);
+CREATE INDEX "idx_reconciliation_user" ON "public"."reconciliation_items" USING "btree" ("user_id");
+CREATE INDEX "idx_sync_log_user" ON "public"."sync_log" USING "btree" ("user_id");
+CREATE INDEX "idx_thrift_user" ON "public"."thrift_commitments" USING "btree" ("user_id");
+CREATE INDEX "idx_transaction_effects_transaction" ON "public"."wealth_transaction_effects" USING "btree" ("transaction_id");
+CREATE INDEX "idx_transaction_effects_user" ON "public"."wealth_transaction_effects" USING "btree" ("user_id", "created_at");
+CREATE INDEX "idx_transaction_lineage_audit_account_status" ON "public"."transaction_lineage_audit" USING "btree" ("account_match_status");
+CREATE INDEX "idx_transaction_lineage_audit_investment_status" ON "public"."transaction_lineage_audit" USING "btree" ("investment_match_status");
+CREATE INDEX "idx_transaction_lineage_audit_transaction_id" ON "public"."transaction_lineage_audit" USING "btree" ("transaction_id");
+CREATE INDEX "idx_transactions_user_date" ON "public"."transactions" USING "btree" ("user_id", "transaction_date");
+CREATE INDEX "idx_wealth_action_execution_records_plan_id" ON "public"."wealth_action_execution_records" USING "btree" ("plan_id", "created_at" DESC);
+CREATE INDEX "idx_wealth_available_capital_active" ON "public"."wealth_available_capital" USING "btree" ("is_available", "as_of_date");
+CREATE INDEX "idx_wealth_decision_history_date" ON "public"."wealth_decision_history" USING "btree" ("decision_date" DESC);
+CREATE INDEX "idx_wealth_decision_history_status" ON "public"."wealth_decision_history" USING "btree" ("approval_status");
+CREATE INDEX "idx_wealth_dividends_pay_date" ON "public"."wealth_dividends" USING "btree" ("pay_date");
+CREATE INDEX "idx_wealth_integrity_checks_run_at" ON "public"."wealth_integrity_checks" USING "btree" ("check_run_at" DESC);
+CREATE INDEX "idx_wealth_market_history_lookup" ON "public"."wealth_market_history" USING "btree" ("ticker", "quote_time" DESC);
+CREATE INDEX "idx_wealth_reconciliation_findings_run" ON "public"."wealth_reconciliation_findings" USING "btree" ("run_id");
+CREATE INDEX "idx_wealth_reconciliation_findings_user_status" ON "public"."wealth_reconciliation_findings" USING "btree" ("user_id", "status", "severity");
+CREATE INDEX "idx_wealth_reconciliation_runs_user_date" ON "public"."wealth_reconciliation_runs" USING "btree" ("user_id", "started_at" DESC);
+CREATE INDEX "idx_wealth_scenario_actions_scenario" ON "public"."wealth_scenario_actions" USING "btree" ("scenario_id");
+CREATE INDEX "idx_wealth_scenario_results_scenario_date" ON "public"."wealth_scenario_results" USING "btree" ("scenario_id", "projection_date");
+CREATE INDEX "idx_what_if_options_comparison_score" ON "public"."wealth_what_if_options" USING "btree" ("comparison_id", "overall_score" DESC);
+CREATE UNIQUE INDEX "liabilities_user_name_uidx" ON "public"."liabilities" USING "btree" (COALESCE("user_id", '00000000-0000-0000-0000-000000000000'::"uuid"), "lower"("liability_name"));
+CREATE INDEX "manual_market_quote_updates_user_ticker_idx" ON "public"."manual_market_quote_updates" USING "btree" ("user_id", "ticker", "created_at" DESC);
+CREATE UNIQUE INDEX "reconciliation_evidence_unique_event" ON "public"."reconciliation_evidence" USING "btree" ("user_id", "evidence_date", "account_name", "amount", "event_type");
+CREATE INDEX "transactions_account_id_idx" ON "public"."transactions" USING "btree" ("account_id");
+CREATE INDEX "transactions_cooperative_id_idx" ON "public"."transactions" USING "btree" ("cooperative_id");
+CREATE INDEX "transactions_cooperative_loan_id_idx" ON "public"."transactions" USING "btree" ("cooperative_loan_id");
+CREATE INDEX "transactions_cooperative_loan_repayment_id_idx" ON "public"."transactions" USING "btree" ("cooperative_loan_repayment_id");
+CREATE INDEX "transactions_target_account_id_idx" ON "public"."transactions" USING "btree" ("target_account_id");
+CREATE INDEX "transactions_thrift_id_idx" ON "public"."transactions" USING "btree" ("thrift_id");
+CREATE UNIQUE INDEX "transactions_user_reference_unique" ON "public"."transactions" USING "btree" ("user_id", "reference") WHERE ("reference" IS NOT NULL);
+CREATE UNIQUE INDEX "ux_wealth_capital_targets_asset" ON "public"."wealth_capital_targets" USING "btree" ("scope_type", "upper"("ticker"), "currency") WHERE (("scope_type" = 'ASSET'::"text") AND ("enabled" = true));
+CREATE UNIQUE INDEX "ux_wealth_capital_targets_market" ON "public"."wealth_capital_targets" USING "btree" ("scope_type", "upper"("market"), "currency") WHERE (("scope_type" = 'MARKET'::"text") AND ("enabled" = true));
+CREATE INDEX "wealth_accounts_user_active_idx" ON "public"."wealth_accounts" USING "btree" ("user_id", "is_active");
+CREATE INDEX "wealth_action_plans_status_idx" ON "public"."wealth_action_plans" USING "btree" ("plan_status", "execution_status", "deadline_at");
+CREATE INDEX "wealth_actions_rank_idx" ON "public"."wealth_actions" USING "btree" ("status", "rank", "priority_score" DESC);
+CREATE UNIQUE INDEX "wealth_alerts_open_key_idx" ON "public"."wealth_alerts" USING "btree" ("alert_key") WHERE ("status" = ANY (ARRAY['OPEN'::"text", 'ACKNOWLEDGED'::"text"]));
+CREATE INDEX "wealth_alerts_status_idx" ON "public"."wealth_alerts" USING "btree" ("status", "severity", "last_detected_at" DESC);
+
+=== FOREIGN KEYS ===
+    ADD CONSTRAINT "assets_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "commitment_allocations_commitment_schedule_id_fkey" FOREIGN KEY ("commitment_schedule_id") REFERENCES "public"."commitment_schedules"("id") ON DELETE RESTRICT;
+    ADD CONSTRAINT "commitment_allocations_transaction_id_fkey" FOREIGN KEY ("transaction_id") REFERENCES "public"."transactions"("id") ON DELETE RESTRICT;
+    ADD CONSTRAINT "commitment_allocations_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "commitment_schedules_cooperative_id_fkey" FOREIGN KEY ("cooperative_id") REFERENCES "public"."cooperatives"("id") ON DELETE RESTRICT;
+    ADD CONSTRAINT "commitment_schedules_thrift_id_fkey" FOREIGN KEY ("thrift_id") REFERENCES "public"."thrift_commitments"("id") ON DELETE RESTRICT;
+    ADD CONSTRAINT "commitment_schedules_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "cooperative_loan_repayments_loan_id_fkey" FOREIGN KEY ("loan_id") REFERENCES "public"."cooperative_loans"("id") ON DELETE RESTRICT;
+    ADD CONSTRAINT "cooperative_loan_repayments_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "cooperative_loan_schedules_loan_id_fkey" FOREIGN KEY ("loan_id") REFERENCES "public"."cooperative_loans"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "cooperative_loans_cooperative_id_fkey" FOREIGN KEY ("cooperative_id") REFERENCES "public"."cooperatives"("id") ON DELETE RESTRICT;
+    ADD CONSTRAINT "cooperative_loans_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "cooperatives_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "goals_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "investments_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "manual_market_quote_updates_investment_id_fkey" FOREIGN KEY ("investment_id") REFERENCES "public"."investments"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "manual_market_quote_updates_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "reconciliation_items_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "sync_log_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "thrift_commitments_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "transaction_lineage_audit_suggested_account_id_fkey" FOREIGN KEY ("suggested_account_id") REFERENCES "public"."wealth_accounts"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "transaction_lineage_audit_suggested_investment_id_fkey" FOREIGN KEY ("suggested_investment_id") REFERENCES "public"."investments"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "transaction_lineage_audit_transaction_id_fkey" FOREIGN KEY ("transaction_id") REFERENCES "public"."transactions"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "transactions_account_id_fkey" FOREIGN KEY ("account_id") REFERENCES "public"."wealth_accounts"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "transactions_cooperative_id_fkey" FOREIGN KEY ("cooperative_id") REFERENCES "public"."cooperatives"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "transactions_cooperative_loan_id_fkey" FOREIGN KEY ("cooperative_loan_id") REFERENCES "public"."cooperative_loans"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "transactions_cooperative_loan_repayment_id_fkey" FOREIGN KEY ("cooperative_loan_repayment_id") REFERENCES "public"."cooperative_loan_repayments"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "transactions_target_account_id_fkey" FOREIGN KEY ("target_account_id") REFERENCES "public"."wealth_accounts"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "transactions_thrift_id_fkey" FOREIGN KEY ("thrift_id") REFERENCES "public"."thrift_commitments"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "transactions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_accounts_legacy_cash_balance_id_fkey" FOREIGN KEY ("legacy_cash_balance_id") REFERENCES "public"."cash_balances"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_accounts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_action_approvals_allocation_id_fkey" FOREIGN KEY ("allocation_id") REFERENCES "public"."wealth_capital_allocation_recommendations"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_action_execution_records_plan_id_fkey" FOREIGN KEY ("plan_id") REFERENCES "public"."wealth_action_plans"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_action_plans_action_id_fkey" FOREIGN KEY ("action_id") REFERENCES "public"."wealth_actions"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_allocation_asset_rules_target_name_fkey" FOREIGN KEY ("target_name") REFERENCES "public"."wealth_portfolio_targets"("target_name") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_capital_allocation_candidates_run_id_fkey" FOREIGN KEY ("run_id") REFERENCES "public"."wealth_capital_allocation_runs"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_capital_allocation_recommendations_decision_id_fkey" FOREIGN KEY ("decision_id") REFERENCES "public"."wealth_decision_recommendations"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_capital_allocation_recommendations_option_id_fkey" FOREIGN KEY ("option_id") REFERENCES "public"."wealth_what_if_options"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_capital_allocation_runs_target_name_fkey" FOREIGN KEY ("target_name") REFERENCES "public"."wealth_portfolio_targets"("target_name");
+    ADD CONSTRAINT "wealth_decision_forecast_paths_approval_id_fkey" FOREIGN KEY ("approval_id") REFERENCES "public"."wealth_action_approvals"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_decision_forecasts_scenario_id_fkey" FOREIGN KEY ("scenario_id") REFERENCES "public"."wealth_decision_scenarios"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_decision_recommendations_comparison_id_fkey" FOREIGN KEY ("comparison_id") REFERENCES "public"."wealth_what_if_comparisons"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_decision_recommendations_recommended_option_id_fkey" FOREIGN KEY ("recommended_option_id") REFERENCES "public"."wealth_what_if_options"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_decision_scenarios_approval_id_fkey" FOREIGN KEY ("approval_id") REFERENCES "public"."wealth_action_approvals"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_execution_records_allocation_id_fkey" FOREIGN KEY ("allocation_id") REFERENCES "public"."wealth_capital_allocation_recommendations"("id") ON DELETE RESTRICT;
+    ADD CONSTRAINT "wealth_execution_records_approval_id_fkey" FOREIGN KEY ("approval_id") REFERENCES "public"."wealth_action_approvals"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_fi_forecasts_scenario_id_fkey" FOREIGN KEY ("scenario_id") REFERENCES "public"."wealth_scenarios"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_fx_staging_raw_id_fkey" FOREIGN KEY ("raw_id") REFERENCES "public"."wealth_fx_raw_ingestion"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_goal_forecasts_goal_id_fkey" FOREIGN KEY ("goal_id") REFERENCES "public"."goals"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_goal_forecasts_scenario_id_fkey" FOREIGN KEY ("scenario_id") REFERENCES "public"."wealth_scenarios"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_goal_funding_sources_goal_id_fkey" FOREIGN KEY ("goal_id") REFERENCES "public"."goals"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_market_staging_raw_id_fkey" FOREIGN KEY ("raw_id") REFERENCES "public"."wealth_market_raw_ingestion"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_profiles_id_fkey" FOREIGN KEY ("id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_rebalancing_actions_run_id_fkey" FOREIGN KEY ("run_id") REFERENCES "public"."wealth_rebalancing_runs"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_rebalancing_approval_links_allocation_id_fkey" FOREIGN KEY ("allocation_id") REFERENCES "public"."wealth_capital_allocation_recommendations"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_rebalancing_approval_links_approval_id_fkey" FOREIGN KEY ("approval_id") REFERENCES "public"."wealth_action_approvals"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_rebalancing_approval_links_rebalancing_action_id_fkey" FOREIGN KEY ("rebalancing_action_id") REFERENCES "public"."wealth_rebalancing_actions"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_rebalancing_candidates_action_plan_id_fkey" FOREIGN KEY ("action_plan_id") REFERENCES "public"."wealth_action_plans"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_reconciliation_findings_run_id_fkey" FOREIGN KEY ("run_id") REFERENCES "public"."wealth_reconciliation_runs"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_reconciliation_findings_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id");
+    ADD CONSTRAINT "wealth_reconciliation_runs_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id");
+    ADD CONSTRAINT "wealth_scenario_actions_goal_id_fkey" FOREIGN KEY ("goal_id") REFERENCES "public"."goals"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_scenario_actions_scenario_id_fkey" FOREIGN KEY ("scenario_id") REFERENCES "public"."wealth_scenarios"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_scenario_results_scenario_id_fkey" FOREIGN KEY ("scenario_id") REFERENCES "public"."wealth_scenarios"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_settings_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_transaction_effects_asset_id_fkey" FOREIGN KEY ("asset_id") REFERENCES "public"."investments"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_transaction_effects_cooperative_id_fkey" FOREIGN KEY ("cooperative_id") REFERENCES "public"."cooperatives"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_transaction_effects_pension_account_id_fkey" FOREIGN KEY ("pension_account_id") REFERENCES "public"."pension_accounts"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_transaction_effects_transaction_id_fkey" FOREIGN KEY ("transaction_id") REFERENCES "public"."transactions"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_transaction_effects_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_what_if_comparisons_baseline_scenario_id_fkey" FOREIGN KEY ("baseline_scenario_id") REFERENCES "public"."wealth_scenarios"("id") ON DELETE SET NULL;
+    ADD CONSTRAINT "wealth_what_if_options_comparison_id_fkey" FOREIGN KEY ("comparison_id") REFERENCES "public"."wealth_what_if_comparisons"("id") ON DELETE CASCADE;
+    ADD CONSTRAINT "wealth_what_if_options_scenario_id_fkey" FOREIGN KEY ("scenario_id") REFERENCES "public"."wealth_scenarios"("id") ON DELETE CASCADE;
+
+=== RLS POLICIES ===
+CREATE POLICY "Authenticated users can read FX rates" ON "public"."fx_rates" FOR SELECT TO "authenticated" USING (true);
+CREATE POLICY "Authenticated users can read market quotes" ON "public"."market_quotes" FOR SELECT TO "authenticated" USING (true);
+CREATE POLICY "Users can insert own profile" ON "public"."wealth_profiles" FOR INSERT WITH CHECK (("auth"."uid"() = "id"));
+CREATE POLICY "Users can update own profile" ON "public"."wealth_profiles" FOR UPDATE USING (("auth"."uid"() = "id"));
+CREATE POLICY "Users can view own profile" ON "public"."wealth_profiles" FOR SELECT USING (("auth"."uid"() = "id"));
+CREATE POLICY "Users manage own assets" ON "public"."assets" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own cash balances" ON "public"."cash_balances" TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id")) WITH CHECK ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users manage own cooperative loan repayments" ON "public"."cooperative_loan_repayments" TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id")) WITH CHECK ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users manage own cooperative loans" ON "public"."cooperative_loans" TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id")) WITH CHECK ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users manage own cooperatives" ON "public"."cooperatives" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own goals" ON "public"."goals" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own investments" ON "public"."investments" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own liabilities" ON "public"."liabilities" TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id")) WITH CHECK ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users manage own manual mutual fund updates" ON "public"."manual_market_quote_updates" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own pension accounts" ON "public"."pension_accounts" TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id")) WITH CHECK ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users manage own reconciliation" ON "public"."reconciliation_items" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own settings" ON "public"."wealth_settings" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own sync logs" ON "public"."sync_log" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own thrift" ON "public"."thrift_commitments" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own transactions" ON "public"."transactions" USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "Users manage own wealth accounts" ON "public"."wealth_accounts" TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id")) WITH CHECK ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users view own reconciliation findings" ON "public"."wealth_reconciliation_findings" FOR SELECT TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users view own reconciliation runs" ON "public"."wealth_reconciliation_runs" FOR SELECT TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "Users view own transaction effects" ON "public"."wealth_transaction_effects" FOR SELECT TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "commitment_allocations_delete_own" ON "public"."commitment_allocations" FOR DELETE USING (("auth"."uid"() = "user_id"));
+CREATE POLICY "commitment_allocations_insert_own" ON "public"."commitment_allocations" FOR INSERT WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "commitment_allocations_select_own" ON "public"."commitment_allocations" FOR SELECT USING (("auth"."uid"() = "user_id"));
+CREATE POLICY "commitment_allocations_update_own" ON "public"."commitment_allocations" FOR UPDATE USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "commitment_schedules_delete_own" ON "public"."commitment_schedules" FOR DELETE USING (("auth"."uid"() = "user_id"));
+CREATE POLICY "commitment_schedules_insert_own" ON "public"."commitment_schedules" FOR INSERT WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "commitment_schedules_select_own" ON "public"."commitment_schedules" FOR SELECT USING (("auth"."uid"() = "user_id"));
+CREATE POLICY "commitment_schedules_update_own" ON "public"."commitment_schedules" FOR UPDATE USING (("auth"."uid"() = "user_id")) WITH CHECK (("auth"."uid"() = "user_id"));
+CREATE POLICY "transaction_lineage_audit_insert_own" ON "public"."transaction_lineage_audit" FOR INSERT TO "authenticated" WITH CHECK ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "transaction_lineage_audit_select_own" ON "public"."transaction_lineage_audit" FOR SELECT TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+CREATE POLICY "transaction_lineage_audit_update_own" ON "public"."transaction_lineage_audit" FOR UPDATE TO "authenticated" USING ((( SELECT "auth"."uid"() AS "uid") = "user_id")) WITH CHECK ((( SELECT "auth"."uid"() AS "uid") = "user_id"));
+
+=== ENUMS / TYPES ===
